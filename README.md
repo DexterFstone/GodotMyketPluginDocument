@@ -51,17 +51,17 @@ func _ready():
 گودو 3:
 ```gdscript
 	iab_helper.start_setup()
-	iab_helper.connect("on_iab_setup_finished",self,"_on_iab_setup_finished",[],CONNECT_ONESHOT)
+	iab_helper.connect("on_iab_setup_finished",self,"on_iab_setup_finished",[],CONNECT_ONESHOT)
 
-func _on_iab_setup_finished(is_succeed : bool, result : String):
+func on_iab_setup_finished(is_succeed : bool, result : String):
 	...
 ```
 گودو 4:
 ```gdscript
 	iab_helper.start_setup()
-	iab_helper.on_iab_setup_finished.connect(_on_iab_setup_finished,CONNECT_ONE_SHOT)
+	iab_helper.on_iab_setup_finished.connect(on_iab_setup_finished,CONNECT_ONE_SHOT)
 
-func _on_iab_setup_finished(is_succeed : bool, result : String):
+func on_iab_setup_finished(is_succeed : bool, result : String):
 	...
 ```
 
@@ -83,17 +83,17 @@ func _on_iab_setup_finished(is_succeed : bool, result : String):
 گودو 3:
 ```gdscript
 	iab_helper.query_inventory_async(query_sku_details, more_sku)
-	iab_helper.connect("on_query_inventory_finished",self,"_on_query_inventory_finished",[],CONNECT_ONESHOT)
+	iab_helper.connect("on_query_inventory_finished",self,"on_query_inventory_finished",[],CONNECT_ONESHOT)
 
-func _on_query_inventory_finished(is_succeed : bool, result : String, inventory : Inventory):
+func on_query_inventory_finished(is_succeed : bool, result : String, inventory : Inventory):
 	...
 ```
 گودو 4:
 ```gdscript
 	iab_helper.query_inventory_async(query_sku_details, more_sku)
-	iab_helper.on_query_inventory_finished.connect(_on_query_inventory_finished,CONNECT_ONE_SHOT)
+	iab_helper.on_query_inventory_finished.connect(on_query_inventory_finished,CONNECT_ONE_SHOT)
 
-func _on_query_inventory_finished(is_succeed : bool, result : String, inventory : Inventory):
+func on_query_inventory_finished(is_succeed : bool, result : String, inventory : Inventory):
 	...
 ```
 متد `query_inventory_async` دارای دو پارامتر است که به ترتیب:
@@ -116,17 +116,17 @@ func _on_query_inventory_finished(is_succeed : bool, result : String, inventory 
 گودو 3:
 ```gdscript
 	iab_helper.launch_purchase_flow(sku, payload)
-	iab_helper.connect("on_iab_purchase_finished",self,"_on_iab_purchase_finished",[],CONNECT_ONESHOT)
+	iab_helper.connect("on_iab_purchase_finished",self,"on_iab_purchase_finished",[],CONNECT_ONESHOT)
 
-func _on_iab_purchase_finished(is_succeed : bool, result : String, purchase : Purchase):
+func on_iab_purchase_finished(is_succeed : bool, result : String, purchase : Purchase):
 	...
 ```
 گودو 4:
 ```gdscript
 	iab_helper.launch_purchase_flow(sku, payload)
-	iab_helper.on_iab_purchase_finished.connect(_on_iab_purchase_finished,CONNECT_ONE_SHOT)
+	iab_helper.on_iab_purchase_finished.connect(on_iab_purchase_finished,CONNECT_ONE_SHOT)
 
-func _on_iab_purchase_finished(is_succeed : bool, result : String, purchase : Purchase):
+func on_iab_purchase_finished(is_succeed : bool, result : String, purchase : Purchase):
 	...
 ```
 متد `launch_purchase_flow` پارامتر‌های زیر را به ترتیب می‌پذیرد:
@@ -148,17 +148,17 @@ func _on_iab_purchase_finished(is_succeed : bool, result : String, purchase : Pu
 گودو 3:
 ```gdscript
 	iab_helper.consume_async(sku)
-	iab_helper.connect("on_consume_finished",self,"_on_consume_finished",[],CONNECT_ONESHOT)
+	iab_helper.connect("on_consume_finished",self,"on_consume_finished",[],CONNECT_ONESHOT)
 
-func _on_consume_finished(is_succeed : bool, result : String, purchase : Purchase):
+func on_consume_finished(is_succeed : bool, result : String, purchase : Purchase):
 	...
 ```
 گودو 4:
 ```gdscript
 	iab_helper.consume_async(sku)
-	iab_helper.on_consume_finished.connect(_on_consume_finished)
+	iab_helper.on_consume_finished.connect(on_consume_finished)
 
-func _on_consume_finished(is_succeed : bool, result : String, purchase : Purchase):
+func on_consume_finished(is_succeed : bool, result : String, purchase : Purchase):
 	...
 ```
 در سینگال `on_consume_finished` دقیقا مانند `on_iab_purchase_finished`، یک `purchase` برای مشخصات خرید و یک `result` برای نتیجهٔ `consume_async` برمی‌گردد. در صورتی که `is_success` برابر `true` بود، می‌توانید محصول را به کاربر تحویل دهید (مثلا سکهٔ او را افزایش دهید).
